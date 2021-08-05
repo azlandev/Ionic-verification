@@ -1,0 +1,7 @@
+{
+  "name": "kyc-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
