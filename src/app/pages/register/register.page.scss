@@ -1,0 +1,22 @@
+.cutout {
+  position: fixed;
+  width: 100vw;
+  height:100vh;
+}
+.inner {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.boundingBox {
+  position: fixed;
+  --background: transparent;
+}
+
+.green {
+  border:2px solid green;
+}
+
+.red {
+  border:2px solid red;
+}

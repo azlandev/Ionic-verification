@@ -1,0 +1,60 @@
+<ion-header *ngIf="cameraActive">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="stopCamera()">Back</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div class="cutout" *ngIf="cameraActive">
+  <div class="inner" [ngStyle]="cutout.Top"></div>
+  <div class="inner" [ngStyle]="cutout.Left"></div>
+  <div class="inner" [ngStyle]="cutout.Right"></div>
+  <div class="inner" [ngStyle]="cutout.Bottom"></div>
+  <div class="boundingBox" [ngStyle]="cutout.Box" [ngClass]="{'green': idDetected, 'red': !idDetected}"></div>
+</div>
+
+<ion-content *ngIf="!cameraActive">
+  <form (ngSubmit)="logForm()" *ngIf="!verificationComplete">
+    <ion-item>
+      <ion-label>First Name:</ion-label>
+      <ion-input type="text" [(ngModel)]="userDetails.FirstName.value" name="fname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last Name:</ion-label>
+      <ion-input type="text" [(ngModel)]="userDetails.LastName.value" name="lname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of Birth:</ion-label>
+      <ion-input type="text" [(ngModel)]="userDetails.DateOfBirth.value" name="dob"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="full">Next</ion-button>
+  </form>
+
+  <div [innerHtml]="divHtml" *ngIf="!verificationComplete"></div>
+
+  <div *ngIf="verificationComplete">
+    <ion-item>
+      <ion-label>First name {{ userDetails.FirstName.verified ? "verified" : "incorrect" }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last name {{ userDetails.LastName.verified ? "verified" : "incorrect" }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date of birth {{ userDetails.DateOfBirth.verified ? "verified" : "incorrect" }}</ion-label>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="cameraActive">
+    <ion-row style="text-align:center">
+      <ion-col>
+        <ion-button (click)="capture()">Scan</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="verificationComplete && !verified">
+    <ion-button (click)="reset()">Try again</ion-button>
+  </ion-toolbar>
+</ion-footer>
