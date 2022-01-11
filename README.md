@@ -1,5 +1,4 @@
-# kyc-app
-Ionic KYC App
+# Ionic ID verification
 ### Usage:
 This is an example app for KYC verification. The user is asked to enter their first name, last name, and date of birth. Then the user must scan their photo ID. This will only work if the ID contains a photo of the user. Once a photo ID has been detected by the camera, the outline will turn from red to green. The user can only scan their ID if the outline is green. After scanning, all the text is extracted from the image. Finally, each of the user input gets verified if it matches the scanned text. (See end of document).
 ### How it works:
